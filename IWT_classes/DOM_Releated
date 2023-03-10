@@ -1,0 +1,35 @@
+//how to use document.getElementById(), document.getElementsByClassName() 
+//document.getElementById("value").value; for geting value 
+//document.getElementsByClassName('disp')[0].innerHTML=data; display into div or any other text area: 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+       
+                <input type="text" id="value"></input>
+        <button onclick="show()">
+                click
+        </button>
+        <div class="disp">
+
+        </div>
+       
+   <script>
+   
+    function show(){
+        var x=document.getElementById("value").value;
+        var data="hello  "+x;                        //data 
+        document.getElementsByClassName('disp')[0].innerHTML=data; //display data into div:
+    }
+       
+   </script>
+        
+</body>
+</html>
