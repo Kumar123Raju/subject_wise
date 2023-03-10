@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+      <input type="text" id="input1" >
+      <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>  
+      </select>
+      <input type="text" id="input2">
+<br>
+<button onclick="cal()" id="button1">calculate</button>
+<h1>Result: </h1>
+<input type="text" id="result1" readonlyS="" />
+
+
+<script>
+        function cal(){
+                let op1=document.getElementById('input1').value;
+                let op2=document.getElementById('input2').value;
+                let oper=document.getElementById('op').value;
+                let result;
+                if(oper=='+'){
+                        result=parseInt(op1)+parseInt(op2);
+                }
+                if(oper=='-'){
+                        result=parseInt(op1)-parseInt(op2);
+                }
+                if(oper=='*'){
+                        result=parseInt(op1)*parseInt(op2);
+                } if(oper=='/'){
+                        result=parseInt(op1)/parseInt(op2);
+                } if(oper=='%'){
+                        result=parseInt(op1)%parseInt(op2);
+                }
+                
+                document.getElementById('result1').value=result;
+                
+        }
+</script>
+
+        
+</body>
+</html>
