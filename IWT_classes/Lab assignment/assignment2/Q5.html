@@ -1,0 +1,148 @@
+<html>
+	<head>
+		<title>this is lab assignment</title>
+		<style>
+			table{
+				height: 30%;
+				width: 30%;
+
+				margin-left: 34%;
+				margin-top: 5%;
+			}
+
+			input{
+				height: 60%;
+				width: 60%;
+
+				color: black;
+				text-align: center;
+				font-size: 20px;
+			}
+
+			#submit{
+				height: 10%;
+				width: 20%;
+				margin-left: 40%;
+				margin-top: 2%;
+			}
+
+			.front-topic,.back-topic{
+				visibility: hidden;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<h3 id="q">5) Create a cascading dropdown, where one will have to first select a Subject, then
+					based on the subject, Topics will be populated, and then on the basis of selected
+					topic, Chapters will be populated. In the implementation, available Subjects will be
+					Front-end and Back-end. In Front-end, available topics will be HTML, CSS, Javascript,
+					and in Back-end, available subjects will be NodeJS and PHP. In HTML, Chapters will
+					be Links, Images, Tables, Lists. In CSS, Chapters will be Borders, Margins,
+					Backgrounds. In Javascript, Chapters will be Variables, Operators, Arrays, Objects. In
+					NodeJS, Chapters will be NPM, HTTP, Express. In PHP, Chapters will be Strings,
+					Arrays, Regex.</h3>
+		<hr/>
+		<form action="#">
+
+			<table>
+				<tr class="rows">
+					<td>SUBJECT : </td>
+					<td>
+						<select>
+							<option>--SELECT--</option>
+							<option value="front">FRONT-END</option>
+							<option value="back">BACK-END</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr class="rows">
+					<td>TOPIC : </td>
+					<td>
+						<select>
+							<option>--SELECT--</option>
+							<option class="front-topic">HTML</option>
+							<option class="front-topic">CSS</option>
+							<option class="front-topic">JAVASCRIPT</option>
+							<option class="back-topic">NODE-JS</option>
+							<option class="back-topic">PHP</option>
+						</select>
+					</td>
+
+				</tr>
+
+				<tr class="rows">
+					<td>CHAPTERS : </td>
+					<td>
+						<select>
+							<option>--SELECT--</option>
+							<div id="select3">
+							<option class="html">Links</option>
+							<option class="html">Images</option>
+							<option class="html">Tables</option>
+							<option class="html">Lists</option>
+							<option class="css">Borders</option>
+							<option class="css">Margins</option>
+							<option class="css">Backgrounds</option>
+							<option class="script">Variables</option>
+							<option class="script">Operators</option>
+							<option class="script">Arrays</option>
+							<option class="script">Objects</option>
+							<option class="node">Express</option>
+							<option class="node">HTTP</option>
+							<option class="node">NPM</option>
+							<option class="php">Strings</option>
+							<option class="php">Arrays</option>
+							<option class="php">Regex.</option>
+							<option>BACK-END</option>
+						</div>
+						</select>
+					</td>
+
+				</tr>
+
+			</table>
+
+			<input id="submit" type="button" value="SUBMIT" onclick = "verify()"/>
+		</form>
+		<script>
+			let select = document.getElementsByTagName("select");
+			
+			let frontTopic = document.getElementsByClassName("front-topic");
+			let backTopic = document.getElementsByClassName("back-topic");
+			
+			let html = document.getElementsByClassName("html");
+			let css = document.getElementsByClassName("css");
+			let script = document.getElementsByClassName("script");
+			let node = document.getElementsByClassName("node");
+			let php = document.getElementsByClassName("php");
+
+			for(let i=0;i<select.length;i++)
+				select[i].addEventListener("change",() =>{
+					
+					if(select[i].value == "front"){
+
+						for(let i=0;i<frontTopic.length;i++){
+							frontTopic[i].style.visibility = "visible";
+						}
+						for(let i=0;i<backTopic.length;i++){
+							backTopic[i].style.visibility = "hidden";
+						}
+					}
+
+					if(select[i].value == "back"){
+
+						for(let i=0;i<frontTopic.length;i++){
+							frontTopic[i].style.visibility = "hidden";
+						}
+						for(let i=0;i<backTopic.length;i++){
+							backTopic[i].style.visibility = "visible";
+						}
+					}
+				});
+
+		</script>	
+	</body>
+</html>
