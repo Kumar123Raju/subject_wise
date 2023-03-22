@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body onload="display()">
+        <div>
+              <h2 id="display"></h2>
+              <div class="buttons">
+                <button onclick="startfun()" id="start">start</button>
+                <button onclick="stopfun()" id="stop">stop</button>
+                <button onclick="resetfun()" id="reset">reset</button>
+              </div>
+        </div>
+        <script>
+                 var hour=0;
+                 var minute=0;
+                 var second=0;
+                 var millisec=0;
+                 var h=document.getElementById("display");
+                 const startbutton=document.getElementById("start");
+                 const stopbutton=document.getElementById("stop");
+                 var x;
+                function startfun(){
+                 x=setInterval(increase,10);
+                 
+                 function increase(){
+                        // h.innerText=hour+":"+minute+":"+second+":"+millisec;
+                       display();
+                        millisec++;
+                        if(millisec==100){
+                                second++;
+                                millisec=0;
+
+                        }
+                        if(second==60){
+                                minute++;
+                                second=0;
+                        }
+                        if(minute==60){
+                                hour++;
+                                minute=0;
+                        }
+                        
+                 }
+                }
+                 function stopfun(){
+                        
+                        clearInterval(x);
+
+                 }
+                 function resetfun(){
+                        clearInterval(x);
+                        hour=0;
+                        minute=0;
+                        second=0;
+                        millisec=0;
+                        // h.innerText=hour+":"+minute+":"+second+":"+millisec;
+                        display();
+
+
+                 }
+                 function display(){
+                           var v1,v2,v3,v4;
+                           v1="0";
+                           
+                           if(hour<10) h.innerText="0"+hour+":";
+                           else  h.innerText=hour+":";
+                           if(minute<10) h.innerText+=v1+""+minute+":";
+                           else  h.innerText+=minute+":";
+                           if(second<10) h.innerText+=v1+""+second+":";
+                           else  h.innerText+=second+":";
+                           if(millisec<10) h.innerText+=v1+""+millisec;
+                           else  h.innerText+=millisec;
+
+                 }
+        </script>
+</body>
+</html>
