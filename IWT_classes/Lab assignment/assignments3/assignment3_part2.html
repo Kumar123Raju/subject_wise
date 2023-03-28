@@ -1,0 +1,189 @@
+<html>
+	<head><title>tic tac toe</title></head>
+		<style>
+			#display{
+				text-align: center;
+				margin-top: 10%;
+			}
+
+			input{
+				border-radius: 3px;
+				height: 100%;
+				width: 100%;
+				font-size: 20px;
+				font-weight: bold;
+			}
+
+			td{
+				max-width: 20px;
+			}
+
+			table{
+				height: 30%;
+				width: 20%;
+				margin-left: 35%;
+				margin-top: 5%;
+			}
+      table td:hover{
+        background-color: black;
+        
+      }
+        
+      }
+		</style>
+	<body>
+		<h1 id="test"></h1>
+		<h3>tic tac toe</h3>
+
+		<table>
+			<tr>
+				<td><input type="button" value=" " id="00" class="buttons"/></td>
+				<td><input type="button" value=" " id="01" class="buttons"/></td>
+				<td><input type="button" value=" " id="02" class="buttons"/></td>
+			</tr>
+			
+			<tr>
+				<td><input type="button" value=" " id="10" class="buttons"/></td>
+				<td><input type="button" value=" " id="11" class="buttons"/></td>
+				<td><input type="button" value=" " id="12" class="buttons"/></td>
+			</tr>
+
+			<tr>
+				<td><input type="button" value=" " id="20" class="buttons"/></td>
+				<td><input type="button" value=" " id="21" class="buttons"/></td>
+				<td><input type="button" value=" " id="22" class="buttons"/></td>
+			</tr>
+		</table>
+
+		<script>
+			let counter = 0;
+			let test = document.getElementById("test");
+			let buttons = document.getElementsByClassName("buttons");
+			
+			// buttons[0].addEventListener("click",()=>{
+			// 	buttons[0].value = "x";
+			// })
+
+			
+			for(let i=0;i<buttons.length;i++){
+				buttons[i].addEventListener("click",()=>{
+					if(buttons[i].value != "X" && buttons[i].value != "O"){
+						counter++;
+						buttons[i].value = "X";
+						let winner = checkWinner();
+						
+						if(winner == 1){
+							return;
+						}
+						// computer is playing here
+
+						if(counter >= 9){
+							reset();
+							return;
+						}
+
+						let randomNumber = parseInt(Math.random()*1000)%9;
+						counter++;
+								
+						while(buttons[randomNumber].value == "X" || buttons[randomNumber].value == "O"){
+							randomNumber = parseInt(Math.random()*1000)%9;
+						}
+
+						buttons[randomNumber].value = "O";
+						checkWinner();
+						if(winner == 1){
+							return;
+						}
+					}
+				})
+			}
+
+
+			function reset(){
+				for(let i=0;i<9;i++)
+				buttons[i].value = " ";
+			}
+
+			function checkWinner(){
+				
+				if(checkRows() != -1 || checkCols() != -1 || checkDiagonals() != -1){
+					reset();
+
+					return 1;
+				}
+
+				return 0;
+			}
+
+			function checkRows(){
+
+				for(let i=0;i<7;i+=3){
+					if(buttons[0+i].value == "X" && buttons[1+i].value == "X" && buttons[2+i].value == "X"){
+						test.innerHTML = "X wins";
+
+						return 1;
+					}
+
+					else if(buttons[0+i].value == "O" && buttons[1+i].value == "O" && buttons[2+i].value == "O"){
+						test.innerHTML = "O wins";
+						
+						return 0;
+					}
+				}
+
+				return -1;
+			}
+
+			function checkCols(){
+
+				for(let i=0;i<3;i++){
+					if(buttons[0+i].value == "X" && buttons[3+i].value == "X" && buttons[6+i].value == "X"){
+						test.innerHTML = "X wins";
+						
+						return 1;
+
+					}
+
+					else if(buttons[0+i].value == "O" && buttons[1+i].value == "O" && buttons[2+i].value == "O"){
+						test.innerHTML = "O wins";
+					
+						return 0;
+					}
+				}
+				
+				return -1;
+			}
+
+			function checkDiagonals(){
+
+				if(buttons[0].value == "X" && buttons[4].value == "X" && buttons[8].value == "X"){
+					test.innerHTML = "X wins";
+				
+						return 1;
+				}
+
+				else if(buttons[0].value == "O" && buttons[4].value == "O" && buttons[8].value == "O"){
+					test.innerHTML = "O wins";
+				
+						return 0;
+				}
+
+				else if(buttons[2].value == "X" && buttons[4].value == "X" && buttons[6].value == "X"){
+					test.innerHTML = "X wins";
+				
+						return 1;
+				}
+
+				else if(buttons[2].value == "O" && buttons[4].value == "O" && buttons[6].value == "O"){
+					test.innerHTML = "O wins";
+				
+						return 0;
+				}
+
+			
+				return -1;
+			}
+						
+		</script>
+	</body>
+</html>
