@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<style>
+    label
+    {
+        font-size: 20px;
+        color: beige;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    div
+    {
+        background-color:grey;
+        height: 500px;
+        width: 100%;
+       
+    }
+   div button
+    {
+        margin-top: 300px;
+        margin-left: 80%;
+        background-color: red;
+        height: 40px;
+        width: 100px;
+        font-size: x-large;
+    }
+    h1
+    {
+       
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    #progress
+    {
+        margin-left: 700px;
+        
+        height: 20px;
+        width: 400px;
+        border-radius: 10px;
+        background-color:wheat;
+        
+    }
+    #inner
+    {
+        height: 20px;
+       width: 0px;
+        border-radius: 10px;  
+        background-color:green;
+    }
+   
+</style>
+<body>
+<div>
+    <h1>Q1:What is the capital of india ?</h1> 
+    <div id="progress">
+        <div id="inner"></div>
+    </div>
+    
+
+
+<input type="radio" name="nandan" id="a" onclick="fun('a')"> 
+<label for="a" id="la">a</label>
+
+<br>
+
+
+<input type="radio" name="nandan" id="b" onclick="fun('b')"> 
+<label for="b" id="lb">b</label>
+<br>
+<input type="radio" name="nandan" id="c" onclick="fun('c')"> 
+<label for="c" id="lc">c</label>
+
+<br>
+<input type="radio" name="nandan" id="d" onclick="fun('d')"> 
+<label for="d" id="ld">d</label>
+
+  
+<div>
+    <button onclick="fun1()">Next</button>
+</div>
+</div>
+
+</body>   
+
+<script>
+let counter=0;
+let i=0;
+let ans=['a','b','c','d','a','c','a','d','a','c']
+let arr=[
+['1. What is JavaScript?',
+'JavaScript is a scripting language used to make the website interactive',
+' JavaScript is an assembly language used to make the website interactive',
+' JavaScript is a compiled language used to make the website interactive',
+' None of the mentioned'],
+['2.What is the National food of india ?','Apple','pineApple','Mango','Litchi'],
+['3.What is the capital of india ?','Delhi','Mumbai','Kolkata','Jamshedpur'],
+['4.What is the National food of india ?','Apple','pineApple','Mango','Litchi'],
+['5.What is the capital of india ?','Delhi','Mumbai','Kolkata','Jamshedpur'],
+['6.What is the National food of india ?','Apple','pineApple','Mango','Litchi'],
+['7.What is the capital of india ?','Delhi','Mumbai','Kolkata','Jamshedpur'],
+['8.What is the National food of india ?','Apple','pineApple','Mango','Litchi'],
+['9.What is the capital of india ?','Delhi','Mumbai','Kolkata','Jamshedpur'],
+['10.What is the National food of india ?','Apple','pineApple','Mango','Litchi']
+]
+function fun(x)
+{
+
+    document.getElementById('inner').style.width='40'*(i)+'px'
+    if(x==ans[i])
+    {
+        counter++;
+    }
+   
+}
+function fun1()
+{
+    
+document.getElementsByTagName('h1')[0].innerText=arr[i][0]
+document.getElementById('la').innerText=arr[i][1]
+document.getElementById('lb').innerText=arr[i][2]
+document.getElementById('lc').innerText=arr[i][3]
+document.getElementById('ld').innerText=arr[i][4]
+i++;
+if(i==10)
+{
+alert('your total score is'+counter);
+}
+
+
+
+}
+
+</script>
+
+</html>
